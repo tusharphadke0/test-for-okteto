@@ -1,0 +1,3 @@
+from actions import ActionCheckWeather 
+actions=ActionCheckWeather()
+actions.run()
