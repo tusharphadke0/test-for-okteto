@@ -4,7 +4,6 @@ services:
     image: okteto-rasa-server:latest
     working_dir: /app
     build: "./"
-    restart: always
     volumes:
     - ./actions: /app/actions
     - ./data: /app/data
