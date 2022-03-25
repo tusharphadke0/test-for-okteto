@@ -1,4 +1,6 @@
-name: rasa-server
+name: okteto-rasa-server
+autocreate: true
+image: okteto/python:3
 command: bash
 volumes:
 - /root/.cache/pip
