@@ -1,12 +1,12 @@
 version: '3.4'
 services:
   rasa-server:
-    image: okteto-rasa-server:latest
+    image: okteto.dev/okteto-rasa-server:latest
     build: "./"
     volumes:
     - ./actions:/app/actions
     - ./data:/app/data
-    command: bash -c "rm -rf models/* && rasa train && rasa run -m models --enable-api --cors \"*\" --debug"
+    command: bash -c "echo \"Installing spacy...\" && pip install spacy && echo \"Installing english medium model...\" && python -m spacy download en_core_web_md  &&  rm -rf models/* && rasa train && rasa run -m models --enable-api --cors \"*\" --debug"
     working_dir: /app
     ports:
     - '5006:5005'
@@ -15,7 +15,7 @@ services:
     - all
 
   rasa-actions-server:
-    image: okteto-rasa-server:latest
+    image: okteto.dev/okteto-rasa-server:latest
     working_dir: /app
     build: "./"
     restart: always
@@ -26,6 +26,11 @@ services:
     - '5055:5055'
     networks:
     - all
+
+  spacyapi:
+    image: jgontrum/spacyapi:en_v2
+    restart: always
+
 
 networks:
   all:
