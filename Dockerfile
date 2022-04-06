@@ -15,7 +15,7 @@ WORKDIR /app
 RUN pip install --no-cache-dir --upgrade pip
 
 # install rasa
-RUN pip install rasa==3.0.4
+RUN pip install rasa==3.0.9
 
 # install rasa
 RUN pip install spacy
