@@ -6,10 +6,10 @@ services:
     volumes:
     - ./actions:/app/actions
     - ./data:/app/data
-    command: bash -c "echo \"Installing spacy...\" && pip install spacy && echo \"Installing english medium model...\" && python -m spacy download en_core_web_md  &&  rm -rf models/* && rasa train && rasa run -m models --enable-api --cors \"*\" --debug"
+    command: bash -c "echo \"Installing spacy...\" && pip install spacy && echo \"Installing english medium model...\" && python -m spacy download en_core_web_md  &&  rm -rf models/* && rasa train && rasa run -m models --enable-api --cors \"*\" --debug -p 5006"
     working_dir: /app
     ports:
-    - '5006:5005'
+    - '5006:5006'
     public: true
     networks:
     - all
